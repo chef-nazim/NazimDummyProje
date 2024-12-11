@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8983f0d17d1049108ab29c465adf39ae, type: 3}
+  m_Name: GameHelper
+  m_EditorClassIdentifier: 
+  Clips:
+  - SoundTyp: 0
+    Clip: {fileID: 8300000, guid: bc3b3292dba8c47baa5847e105a94a4a, type: 3}
+  - SoundTyp: 1
+    Clip: {fileID: 8300000, guid: b25ee3ab25e604c8eb31264453256558, type: 3}
+  - SoundTyp: 2
+    Clip: {fileID: 8300000, guid: f3834f7426d8c410796081f5358f478b, type: 3}
+  - SoundTyp: 3
+    Clip: {fileID: 8300000, guid: df12776c675c24100bcdd5754eeb959a, type: 3}
+  - SoundTyp: 4
+    Clip: {fileID: 8300000, guid: c1b5bd0eb683f457f925833e3e38401a, type: 3}
+  - SoundTyp: 5
+    Clip: {fileID: 8300000, guid: 1a2c11d87a838462fa9d863337bf25dd, type: 3}
+  - SoundTyp: 6
+    Clip: {fileID: 8300000, guid: ea368c3e0b88744b38e26ef85a3304d3, type: 3}
+  - SoundTyp: 7
+    Clip: {fileID: 8300000, guid: c69b1bdd3485a410f825680b9dc58908, type: 3}
+  - SoundTyp: 8
+    Clip: {fileID: 8300000, guid: 50f7df37b5ec741bebe56c6c643c54a7, type: 3}
+  - SoundTyp: 9
+    Clip: {fileID: 8300000, guid: 081d2602579824fae83a40f34c9f4f5a, type: 3}
+  - SoundTyp: 10
+    Clip: {fileID: 8300000, guid: 9af5f1d2eb2bd4bf1872afd5b8284087, type: 3}
+  LevelCompleteCoin: 20
+  GridItemWidth: 1.25
+  GridItemHeight: 1.25
+  GridItemFeedDistance: 1
+  NormalGridItemSplineSpeed: 1
+  FingerDownGridItemSplineSpeed: 0
+  ReloadBoosterSpeed: 5
+  ChangeableDistance: 1
+  DragAnimationDuration: 0.15
+  OrderGridItemDuration: 0.15
+  GridItemOrderEase: 28
+  GridItemDragEase: 27
+  ChrMaterialList:
+  - {fileID: 2100000, guid: 12bd02e737e2643348f56ef859a29929, type: 2}
+  - {fileID: 2100000, guid: c7c929bf78ffd44899a8ed4697a2c8cb, type: 2}
+  - {fileID: 2100000, guid: 53634ae7e3e6a4b3cb54f635cb2f1737, type: 2}
+  - {fileID: 2100000, guid: 7930b412631c24cd7af0cde91330f9ae, type: 2}
+  - {fileID: 2100000, guid: 1eb72f289e287499c911078202e87f9a, type: 2}
+  - {fileID: 2100000, guid: f5cca0cf0299f4203a5e55846e3079de, type: 2}
+  - {fileID: 2100000, guid: bb29ab7ef0e2e4b6d92da7021da86b5e, type: 2}
+  BoatMaterialList:
+  - {fileID: 2100000, guid: cfd3fd2cd16830449ad707e16bf11fa1, type: 2}
+  - {fileID: 2100000, guid: 515e1fa6426802c4b8abd77aaa184d2b, type: 2}
+  - {fileID: 2100000, guid: 80443b4cefee6574d95e80c5e4289819, type: 2}
+  - {fileID: 2100000, guid: a6841fc19753d4cee8a7af8aa664c1fe, type: 2}
+  - {fileID: 2100000, guid: cf7df370518bc4d3484fcbcd31d60b9c, type: 2}
+  - {fileID: 2100000, guid: 53c84886248d34831809d844370f8b50, type: 2}
+  - {fileID: 2100000, guid: 01ed0df770c0047578b85e1a1c6467ad, type: 2}
+  GoalItemPositionCount: 3
+  GoalItemPositionOffset: {x: 3.4, y: 0, z: 0}
+  GoalItemPositionRotation: {x: 0, y: 60, z: 0}
+  SlotCount: 5
+  SlotCapacity: 4
+  GoalItemCreatePosition: {x: -5, y: 0, z: 0}
+  GoalItemCreateMoveDuration: 0.2
+  SplineList:
+  - {fileID: 8262046043965757731, guid: 2a37ceea0122646718f660145c3000cc, type: 3}
+  - {fileID: 5966802671756167706, guid: 64266a00daf3f4cde942a1fa90844464, type: 3}
+  - {fileID: 3004259466497352364, guid: 35bec6a1e1987400388eb05c528826d5, type: 3}
+  - {fileID: 6249038767084836980, guid: 10bec7dd1b03b40aa97811b23a894f2c, type: 3}
+  - {fileID: 8246088067090193415, guid: 10bae9646829146e39de84208fa738b5, type: 3}
+  - {fileID: 8800396016997548183, guid: 701817df859d74f41a3b3f1512b1a815, type: 3}
+  - {fileID: 8466194025531395372, guid: 98ce6b1ba4e39455086ce7c23f3e1d4c, type: 3}
+  - {fileID: 7884327172592886890, guid: a1701ec868ee242f99ff68ca93514fe9, type: 3}
+  - {fileID: 7177865923376315178, guid: ac8bac33487d440d2a6f0b975db77760, type: 3}
+  - {fileID: 4349238729612396789, guid: 6eecdd77f9c2e49e7b2fcfe6f29cf920, type: 3}
+  FingerDistanceVector: {x: 0, y: 0.75, z: 1}
+  ReloadBoosterCount: 5
+  GoalItemBlendShapeDuration: 0.1
+  GoalItemBlendShapeValue: 70
+  GoalItemBlendShapeEase: 1
