@@ -215,7 +215,7 @@ MonoBehaviour:
   _rewardInactiveGO: {fileID: 4398148588767286655}
   _rewardButtonImage: {fileID: 519337338235417307}
   _activeSprite: {fileID: 21300000, guid: 0788b6b5b98864b759a4407ce9dd52dc, type: 3}
-  _inactiveSprite: {fileID: 21300000, guid: 81cbea46aec554456a285a6c36f6cb79, type: 3}
+  _inactiveSprite: {fileID: 21300000, guid: 2f283906c13654b05805b472276d11cd, type: 3}
   _rewardTimerText: {fileID: 1192354736567418002}
 --- !u!1 &2753588001608669725
 GameObject:
