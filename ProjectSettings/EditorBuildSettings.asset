@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ChefGame/Scenes/Game.unity
+    path: Assets/GameFolders/Scenes/Game.unity
     guid: 13cebbb2ad2b84c28a9a85fede679eb0
   m_configObjects: {}
