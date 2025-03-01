@@ -9,7 +9,7 @@ namespace NCG.template.Managers
     {
         private GameModel _gameModel;
 
-        EventBinding<FeelingEvent> _feelingEventSubscriber;
+        
         
         public HapticManager()
         {
@@ -19,8 +19,8 @@ namespace NCG.template.Managers
 
         protected void Subscriptions()
         {
-            _feelingEventSubscriber = new EventBinding<FeelingEvent>(OnFeelingEvent);
-            EventBus<FeelingEvent>.Subscribe(_feelingEventSubscriber);
+           
+            EventBus<FeelingEvent>.Subscriber(OnFeelingEvent);
         }
 
         private void OnFeelingEvent(FeelingEvent feelingEvent)

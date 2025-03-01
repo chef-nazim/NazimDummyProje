@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,29 +6,42 @@ namespace NCG.template.EventBus
 {
     public static class EventBus<T> where T : IEvent
     {
-        static readonly HashSet<IEventBinding<T>> bindings = new HashSet<IEventBinding<T>>();
+        private static HashSet<Action<T>> eventListeners = new HashSet<Action<T>>();
 
-        public static void Subscribe(EventBinding<T> binding) => bindings.Add(binding);
-        public static void Unsubscribe(EventBinding<T> binding) => bindings.Remove(binding);
+        public static void Subscriber(Action<T> listener)
+        {
+            if (listener != null)
+                eventListeners.Add(listener);
+        }
+
+        public static void Unsubscribe(Action<T> listener)
+        {
+            if (listener != null)
+                eventListeners.Remove(listener);
+        }
 
         public static void Publish(T @event)
         {
-            var snapshot = new HashSet<IEventBinding<T>>(bindings);
-
-            foreach (var binding in snapshot)
+            foreach (var listener in eventListeners)
             {
-                if (bindings.Contains(binding))
+                if (listener != null)
+                    listener(@event);
+
+                if (eventListeners.Count == 0)
                 {
-                    binding.OnEvent.Invoke(@event);
-                    binding.OnEventNoArgs.Invoke();
+                    Debug.LogWarning($"No listener found for event {@event.GetType().Name}");
+                    break;
                 }
             }
         }
 
-        static void Clear()
+        public static void ClearAll()
         {
-            Debug.Log($"Clearing {typeof(T).Name} bindings");
-            bindings.Clear();
+            Debug.Log($"Clearing {typeof(T).Name} listeners");
+            eventListeners.Clear();
+
+            eventListeners = null;
+            GC.Collect();
         }
     }
 }

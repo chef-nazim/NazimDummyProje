@@ -23,11 +23,6 @@ namespace NCG.template.Controllers
             
         }
         
-        #region Subscribe
-
-        EventBinding<LevelModelCreatEvent> _levelModelCreatEventSubscriber;
-
-        #endregion
 
         #region Publish
         // create prop eventbus levelmodelcreatedevent
@@ -46,7 +41,7 @@ namespace NCG.template.Controllers
 
         private void OnEnable()
         {
-            _levelModelCreatEventSubscriber = new EventBinding<LevelModelCreatEvent>(s => LevelModelCreat(s));
+            EventBus<LevelModelCreatEvent>.Subscriber(LevelModelCreat);
         }
 
 

@@ -41,12 +41,7 @@ namespace NCG.template.Views
         public event Action<BoosterButton> OnBoosterButtonClick;
 
         #endregion
-
-        #region Subscribers
-
-          EventBinding<LevelModelCreatedEvent> _levelModelCreatedEventSubscriber;
-
-        #endregion
+        
         GameModel _gameModel => GameModel.Instance;
         LevelModelController _levelModelController => LevelModelController._instance;
 
@@ -84,14 +79,13 @@ namespace NCG.template.Views
         
         protected override void SubscribeEvents()
         {
-            _levelModelCreatedEventSubscriber = new EventBinding<LevelModelCreatedEvent>(LevelModelCreated);
-            EventBus<LevelModelCreatedEvent>.Subscribe(_levelModelCreatedEventSubscriber);
+            EventBus<LevelModelCreatedEvent>.Subscriber(LevelModelCreated);
         }
 
         
         protected override void UnSubscribeEvents()
         {
-            EventBus<LevelModelCreatedEvent>.Unsubscribe(_levelModelCreatedEventSubscriber);
+            EventBus<LevelModelCreatedEvent>.Unsubscribe(LevelModelCreated);
         }
         
         public override void Show(MenuData menuData)

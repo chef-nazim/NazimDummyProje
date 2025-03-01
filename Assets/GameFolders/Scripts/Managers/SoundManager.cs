@@ -14,7 +14,7 @@ namespace NCG.template.Managers
         private Containers _containers => Containers.instance;
         private GameHelper _gameHelper; // todo bi sekilde buraya getir
 
-        EventBinding<FeelingEvent> _feelingEventSubscriber;
+        
         
         public SoundManager()
         {
@@ -23,8 +23,8 @@ namespace NCG.template.Managers
         }
         protected  void Subscriptions()
         {
-            _feelingEventSubscriber = new EventBinding<FeelingEvent>(OnFeelingEvent);
-            EventBus<FeelingEvent>.Subscribe(_feelingEventSubscriber);
+            
+            EventBus<FeelingEvent>.Subscriber(OnFeelingEvent);
         }
 
         private void OnFeelingEvent(FeelingEvent feelingEvent)

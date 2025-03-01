@@ -14,15 +14,7 @@ namespace NCG.template.Controllers
 {
     public class ProcessSystemController
     {
-        #region Subscriber
-
-        EventBinding<TapITableItemEvent> _tapITableItemEventSubscriber;
-        EventBinding<LevelCreatedEvent> _levelCreatedEventSubscriber;
-        EventBinding<UseBoosterEvent> _useBoosterEventSubscriber;
-
-        #endregion
-
-       
+      
 
         //GameManager _gameManager => GameManager.instance;
 
@@ -42,14 +34,14 @@ namespace NCG.template.Controllers
 
         protected void Init()
         {
-            _tapITableItemEventSubscriber = new EventBinding<TapITableItemEvent>(HandleTapItemEvent);
-            EventBus<TapITableItemEvent>.Subscribe(_tapITableItemEventSubscriber);
+            
+            EventBus<TapITableItemEvent>.Subscriber(HandleTapItemEvent);
 
-            _levelCreatedEventSubscriber = new EventBinding<LevelCreatedEvent>(LevelCreated);
-            EventBus<LevelCreatedEvent>.Subscribe(_levelCreatedEventSubscriber);
+            
+            EventBus<LevelCreatedEvent>.Subscriber(LevelCreated);
 
-            _useBoosterEventSubscriber = new EventBinding<UseBoosterEvent>(UseBooster);
-            EventBus<UseBoosterEvent>.Subscribe(_useBoosterEventSubscriber);
+            
+            EventBus<UseBoosterEvent>.Subscriber(UseBooster);
         }
 
 

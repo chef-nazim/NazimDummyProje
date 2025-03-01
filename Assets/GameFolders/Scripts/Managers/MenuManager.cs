@@ -19,30 +19,28 @@ namespace NCG.template.Managers
         [SerializeField] FailPanelView _failMenuView;
 
 
-        EventBinding<OpenMenuEvent> _openMenuSubscriber;
-        EventBinding<CloseMenuEvent> _closeMenuSubscriber;
-        EventBinding<CloseOtherMenuEvent> _closeOthersMenuSubscriber;
-        EventBinding<LevelModelCreatedEvent> _levelModelCreatedEventSubscriber;
+        
 
         private void OnEnable()
         {
             MessagePipeSubscribes();
+            
         }
 
 
         void MessagePipeSubscribes()
         {
-            _openMenuSubscriber = new EventBinding<OpenMenuEvent>(OpenMenuHandler);
-            EventBus<OpenMenuEvent>.Subscribe(_openMenuSubscriber);
+            
+            EventBus<OpenMenuEvent>.Subscriber(OpenMenuHandler);
 
-            _closeMenuSubscriber = new EventBinding<CloseMenuEvent>(CloseMenuHandler);
-            EventBus<CloseMenuEvent>.Subscribe(_closeMenuSubscriber);
+            
+            EventBus<CloseMenuEvent>.Subscriber(CloseMenuHandler);
 
-            _closeOthersMenuSubscriber = new EventBinding<CloseOtherMenuEvent>(CloseOthersMenuHandler);
-            EventBus<CloseOtherMenuEvent>.Subscribe(_closeOthersMenuSubscriber);
+            
+            EventBus<CloseOtherMenuEvent>.Subscriber(CloseOthersMenuHandler);
 
-            _levelModelCreatedEventSubscriber = new EventBinding<LevelModelCreatedEvent>(LevelModelCreated);
-            EventBus<LevelModelCreatedEvent>.Subscribe(_levelModelCreatedEventSubscriber);
+            
+            EventBus<LevelModelCreatedEvent>.Subscriber(LevelModelCreated);
         }
 
         public void LevelModelCreated(LevelModelCreatedEvent e)

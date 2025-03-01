@@ -18,10 +18,7 @@ namespace NCG.template.Managers
         [Inject] private readonly LevelModelController _levelModelController;
         [Inject] private readonly Containers _containers;
         [Inject] private readonly GameHelper _gameHelper;
-
-
-        EventBinding<LevelModelCreatedEvent> _levelModelCreatedEventSubscriber;
-        EventBinding<RestartButtonClickEvent> _restartButtonClickEventSubscriber;
+        
 
         private void OnEnable()
         {
@@ -33,13 +30,12 @@ namespace NCG.template.Managers
 
         void Subscriptions()
         {
-            _levelModelCreatedEventSubscriber = new EventBinding<LevelModelCreatedEvent>(s => OnLevelModelCreated(s));
-            EventBus<LevelModelCreatedEvent>.Subscribe(_levelModelCreatedEventSubscriber);
+            
+            EventBus<LevelModelCreatedEvent>.Subscriber(OnLevelModelCreated);
 
 
-            _restartButtonClickEventSubscriber =
-                new EventBinding<RestartButtonClickEvent>(s => OnRestartButtonClick(s));
-            EventBus<RestartButtonClickEvent>.Subscribe(_restartButtonClickEventSubscriber);
+            
+            EventBus<RestartButtonClickEvent>.Subscriber(OnRestartButtonClick);
         }
 
         private void OnLevelModelCreated(LevelModelCreatedEvent levelModelCreatedEvent)
