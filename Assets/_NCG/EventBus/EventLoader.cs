@@ -1,5 +1,6 @@
 using System;
 using NCG.template._NCG.Core.BaseClass;
+using NCG.template._NCG.Pool;
 using UnityEngine;
 
 namespace NCG.template.EventBus
@@ -38,5 +39,6 @@ namespace NCG.template.EventBus
                 Debug.Log($"BaseController = > {eventType.Name}  automatically Initialized");
             }
         }
+        
     }
 }

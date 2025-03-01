@@ -5,6 +5,7 @@ using NCG.template._NCG.Core.AllEvents;
 using NCG.template.Controllers;
 using NCG.template.EventBus;
 using NCG.template.extensions;
+using NCG.template.GameFolders.Scripts.Pool;
 using NCG.template.Managers;
 using NCG.template.models;
 using NCG.template.Scripts.Others;
@@ -49,6 +50,8 @@ namespace NCG.template.GameFolders.Scripts.AppInitializier
             //  GameAnalytics.Initialize();
             AnalyticEventHelper.GameStart();
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            
+            
         }
     }
 }

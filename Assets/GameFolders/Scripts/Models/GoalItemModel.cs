@@ -1,6 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using NCG.template._NCG.Pool;
 using UnityEngine;
 
 namespace NCG.template.models
@@ -16,14 +17,14 @@ namespace NCG.template.models
 
 
     [Serializable]
-    public class BaseItemModel 
+    public class BaseItemModel : ISpawnItemModel
     {
         
         public BaseItem Item { get; set; }
         
         public void SetParent(Transform transform)
         {
-            Item.transform.SetParent(transform);
+            Item.SetParent(transform);
         }
 
         public void SetLocalPosition(Vector3 zero)
@@ -91,20 +92,13 @@ namespace NCG.template.models
         
         public virtual void DisposeModel()
         {
-         
+            
         }
     }
 
-    public class BaseItem : MonoBehaviour 
+    public class BaseItem : MonoBehaviour, ISpawnItem<BaseItemModel>
     {
         public BaseItemModel ItemModel { get; set; }
-        
-        public void Dispose()
-        {
-            
-        }
-
-        
         public void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
@@ -114,6 +108,16 @@ namespace NCG.template.models
         {
             ItemModel = itemModel;
             itemModel.Item = this;
+        }
+
+        public void SetParent(Transform parent)
+        {
+            transform.SetParent(parent);
+        }
+
+        public void DisposeItem()
+        {
+            Destroy(gameObject);
         }
     }
 
