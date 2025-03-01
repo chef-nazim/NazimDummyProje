@@ -1,21 +1,16 @@
-using System;
-using NCG.template.models;
-using NCG.template.Scripts.Item;
-using NCG.template.Scripts.Others;
-
-using UnityEngine;
-using VContainer;
-
+using NCG.template._NCG.Core.BaseClass;
 namespace NCG.template.Managers
 {
-    public class PoolManager 
+    public class PoolManager : BaseManager
     {
-    
         
-        public void DisposeAllPool()
+        public override void Initialize()
         {
-          
             
+        }
+
+        public override void Dispose()
+        {
             
         }
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NCG.template.models
 {
-    public class GameModel : BaseGameModel
+    public class GameModel : BaseGameModel 
     {
 
         public static GameModel Instance;

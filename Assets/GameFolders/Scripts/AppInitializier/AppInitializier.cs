@@ -1,62 +1,50 @@
-using System.Threading;
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using NCG.template._NCG.Core.AllEvents;
 using NCG.template.Controllers;
 using NCG.template.EventBus;
-using NCG.template.Events;
 using NCG.template.extensions;
+using NCG.template.Managers;
 using NCG.template.models;
 using NCG.template.Scripts.Others;
 using NCG.template.Scripts.ScriptableObjects;
 using UnityEngine;
-namespace NCG.template.Managers
+
+namespace NCG.template.GameFolders.Scripts.AppInitializier
 {
-    public class AppManager : Singleton<AppManager>
+    public class AppInitializier: Singleton<AppInitializier>
     {
         [SerializeField] private GameHelper _gameHelper;
         private GameModel _gameModel;
+        
+        
         public GameModel GameModel => _gameModel;
         public GameHelper GameHelper  => _gameHelper;
-
-
-        #region Manager
-
-        private HapticManager _hapticManager;
-        private SoundManager _soundManager;
-
-        #endregion
-
-        #region Controller
-
-        private ProcessSystemController _processSystemController;
-
-        #endregion
-        
-        
-        
         
         
 
         protected override async void Awake()
         {
             base.Awake();
-            
-            await InitializeGame();
             _gameModel = new GameModel();
+            await InitializeGame();
+        }
 
-            _processSystemController = new ProcessSystemController();
-
-            _hapticManager = new HapticManager();
-            _soundManager = new SoundManager();
-
+        private void Start()
+        {
+            
+            Canvas.ForceUpdateCanvases();
             EventBus<CreateGamePlaySceneEvent>.Publish(new CreateGamePlaySceneEvent());
         }
 
-
         async UniTask InitializeGame()
         {
+            
             DOTween.SetTweensCapacity(1000, 1000);
+            
+            EventLoader.InitializAllBaseManager();
+            EventLoader.InitializAllBaseController();
             //Application.targetFrameRate = 60;
             //  GameAnalytics.Initialize();
             AnalyticEventHelper.GameStart();

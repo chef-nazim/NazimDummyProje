@@ -31,16 +31,16 @@ namespace NCG.template.Managers
         void MessagePipeSubscribes()
         {
             
-            EventBus<OpenMenuEvent>.Subscriber(OpenMenuHandler);
+            EventBus<OpenMenuEvent>.Subscribe(OpenMenuHandler);
 
             
-            EventBus<CloseMenuEvent>.Subscriber(CloseMenuHandler);
+            EventBus<CloseMenuEvent>.Subscribe(CloseMenuHandler);
 
             
-            EventBus<CloseOtherMenuEvent>.Subscriber(CloseOthersMenuHandler);
+            EventBus<CloseOtherMenuEvent>.Subscribe(CloseOthersMenuHandler);
 
             
-            EventBus<LevelModelCreatedEvent>.Subscriber(LevelModelCreated);
+            EventBus<LevelModelCreatedEvent>.Subscribe(LevelModelCreated);
         }
 
         public void LevelModelCreated(LevelModelCreatedEvent e)

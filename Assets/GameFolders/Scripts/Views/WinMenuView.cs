@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using Lofelt.NiceVibrations;
 using NCG.template._NCG.Core.AllEvents;
@@ -6,7 +5,7 @@ using NCG.template._NCG.Core.Model;
 using NCG.template._NCG.Core.View;
 using NCG.template.enums;
 using NCG.template.EventBus;
-using NCG.template.Managers;
+using NCG.template.GameFolders.Scripts.AppInitializier;
 using NCG.template.models;
 using NCG.template.Scripts.ScriptableObjects;
 using UnityEngine;
@@ -24,8 +23,9 @@ namespace NCG.template.Views
 
 
         GameModel _gameModel => GameModel.Instance;
-        GameHelper _gameHelper => AppManager.instance.GameHelper;
+        GameHelper _gameHelper => AppInitializier.instance.GameHelper;
         
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -40,6 +40,7 @@ namespace NCG.template.Views
 
         protected override void SubscribeEvents()
         {
+            
         }
 
         protected override void UnSubscribeEvents()
@@ -57,10 +58,13 @@ namespace NCG.template.Views
 
             SetCoinText(_gameHelper.LevelCompleteCoin);
             PlayPanelOpeningAnimation();
+            View.SetActive(true);
         }
 
         public override void Hide()
         {
+            
+            View.SetActive(false);
         }
         
           public void SetCoinText(int i)

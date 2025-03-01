@@ -94,11 +94,13 @@ namespace NCG.template.Views
             }
             SetFailType(failType,isHaveCoin,playOnPrice);
           
+            View.SetActive(true);
         }
 
         public override void Hide()
         {
             
+            View.SetActive(false);
         }
         
         

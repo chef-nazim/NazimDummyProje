@@ -1,6 +1,9 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Lofelt.NiceVibrations;
 using MessagePipe;
 using NCG.template._NCG.Core.AllEvents;
+using NCG.template._NCG.Core.BaseClass;
 using NCG.template.Controllers;
 using NCG.template.enums;
 using NCG.template.EventBus;
@@ -16,45 +19,39 @@ using VContainer;
 
 namespace NCG.template.Managers
 {
-    public class LevelManager
+    public class LevelManager : BaseManager
     {
-        #region subscribe
-
-        [Inject] private readonly ISubscriber<CreateGamePlaySceneEvent> _createGamePlaySceneEventSubscriber;
-
-        [Inject] private readonly ISubscriber<LevelCompleteEvent> _levelCompleteEventSubscriber;
-        [Inject] private readonly ISubscriber<LevelFailEvent> _levelFailEventSubscriber;
-        [Inject] private readonly ISubscriber<RestartButtonClickEvent> _restartButtonClickEventSubscriber;
-        [Inject] private readonly ISubscriber<LevelDestroyEvent> _levelDestroyEventSubscriber;
-        [Inject] private readonly ISubscriber<PlayOnButtonClickEvent> _playOnButtonClickEventSubscriber;
-        [Inject] private readonly ISubscriber<RewardPlayOnButtonClickEvent> _rewardPlayOnButtonClickEventSubscriber;
-        [Inject] private readonly ISubscriber<TapBoosterButtonEvent> _tapBoosterButtonEventSubscriber;
-
-        #endregion
-
-        #region publish
-
-        #endregion
-
-
-        [Inject] private readonly GameModel _gameModel;
+        private GameModel _gameModel => GameModel.Instance;
+        private LevelModelController _levelModelController => LevelModelController._instance;
         
-        [Inject] readonly IObjectResolver _resolver;
-        [Inject] private readonly LevelModelController _levelModelController;
-        [Inject] private readonly GameHelper _gameHelper;
-        [Inject] private readonly Containers _containers;
+        public static LevelManager Instance;
 
-        void Subscriptions()
+        
+        public override void Initialize()
         {
-            _createGamePlaySceneEventSubscriber.Subscribe(CreateGamePlayScene);
-            _restartButtonClickEventSubscriber.Subscribe(s => RestartButtonClick(s));
-            _levelCompleteEventSubscriber.Subscribe(s => LevelComplete(s));
-            _levelFailEventSubscriber.Subscribe(s => LevelFail(s));
-            _levelDestroyEventSubscriber.Subscribe(s => LevelDestroy(s));
-            _playOnButtonClickEventSubscriber.Subscribe(s => PlayOnButtonClick(s));
-            _rewardPlayOnButtonClickEventSubscriber.Subscribe(s => RewardPlayOnButtonClick(s));
-            _tapBoosterButtonEventSubscriber.Subscribe(s => TapBoosterButton(s));
+            Instance = this;
+            EventBus<CreateGamePlaySceneEvent>.Subscribe(CreateGamePlayScene);
+            EventBus<RestartButtonClickEvent>.Subscribe(s => RestartButtonClick(s));
+            EventBus<LevelCompleteEvent>.Subscribe(s => LevelComplete(s));
+            EventBus<LevelFailEvent>.Subscribe(s => LevelFail(s));
+            EventBus<LevelDestroyEvent>.Subscribe(s => LevelDestroy(s));
+            EventBus<PlayOnButtonClickEvent>.Subscribe(s => PlayOnButtonClick(s));
+            EventBus<RewardPlayOnButtonClickEvent>.Subscribe(s => RewardPlayOnButtonClick(s));
+            EventBus<TapBoosterButtonEvent>.Subscribe(s => TapBoosterButton(s));
         }
+
+        public override void Dispose()
+        {
+            EventBus<CreateGamePlaySceneEvent>.Unsubscribe(CreateGamePlayScene);
+            EventBus<RestartButtonClickEvent>.Unsubscribe(s => RestartButtonClick(s));
+            EventBus<LevelCompleteEvent>.Unsubscribe(s => LevelComplete(s));
+            EventBus<LevelFailEvent>.Unsubscribe(s => LevelFail(s));
+            EventBus<LevelDestroyEvent>.Unsubscribe(s => LevelDestroy(s));
+            EventBus<PlayOnButtonClickEvent>.Unsubscribe(s => PlayOnButtonClick(s));
+            EventBus<RewardPlayOnButtonClickEvent>.Unsubscribe(s => RewardPlayOnButtonClick(s));
+            EventBus<TapBoosterButtonEvent>.Unsubscribe(s => TapBoosterButton(s));
+        }
+
 
         private void TapBoosterButton(TapBoosterButtonEvent tapBoosterButtonEvent)
         {
@@ -87,11 +84,11 @@ namespace NCG.template.Managers
                 }
                 else
                 {
-                    /*_levelModelController.LevelModel.FeelEffect(new FeelingEvent
+                    EventBus<FeelingEvent>.Publish(new FeelingEvent
                     {
                         SoundType = PlaySound.None,
                         HapticType = HapticPatterns.PresetType.Failure
-                    });*/
+                    });
                     return false;
                 }
             }
@@ -113,7 +110,6 @@ namespace NCG.template.Managers
 
         private void LevelDestroy(LevelDestroyEvent levelDestroyEvent)
         {
-          
         }
 
         private void LevelFail(LevelFailEvent levelFailEvent)
@@ -126,16 +122,15 @@ namespace NCG.template.Managers
         private async void RestartButtonClick(RestartButtonClickEvent restartButtonClickEvent)
         {
             AnalyticEventHelper.LevelRestart(_gameModel.Level, restartButtonClickEvent.From.ToString());
-            EventBus<LevelDestroyEvent>.Publish( new LevelDestroyEvent());
+            EventBus<LevelDestroyEvent>.Publish(new LevelDestroyEvent());
             CreateLevel();
         }
 
         private void LevelComplete(LevelCompleteEvent levelCompleteEvent)
         {
-            /*AnalyticEventHelper.LevelComplete(_gameModel.Level, (int)(_levelModelController.LevelModel.LevelTime - _levelModelController.LevelModel.LevelTimer.TimerModel.RemainingTime),
-                (int)(_levelModelController.LevelModel.LevelTimer.TimerModel.RemainingTime), _gameModel.CoinCount);*/
+            AnalyticEventHelper.LevelComplete(_gameModel.Level);
             OpenMenuEvent menu = new OpenMenuEvent(MenuNames.WinMenu, new WinMenuViewData());
-            
+
             EventBus<OpenMenuEvent>.Publish(menu);
         }
 
@@ -147,7 +142,7 @@ namespace NCG.template.Managers
         public void CreateLevel()
         {
             AnalyticEventHelper.LevelStart(_gameModel.Level);
-            
+
             EventBus<LevelModelCreatEvent>.Publish(new LevelModelCreatEvent());
 
             if (_levelModelController.LevelModel?._levelData.Seed != -1)

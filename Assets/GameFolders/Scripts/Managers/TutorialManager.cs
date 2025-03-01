@@ -31,11 +31,11 @@ namespace NCG.template.Managers
         void Subscriptions()
         {
             
-            EventBus<LevelModelCreatedEvent>.Subscriber(OnLevelModelCreated);
+            EventBus<LevelModelCreatedEvent>.Subscribe(OnLevelModelCreated);
 
 
             
-            EventBus<RestartButtonClickEvent>.Subscriber(OnRestartButtonClick);
+            EventBus<RestartButtonClickEvent>.Subscribe(OnRestartButtonClick);
         }
 
         private void OnLevelModelCreated(LevelModelCreatedEvent levelModelCreatedEvent)

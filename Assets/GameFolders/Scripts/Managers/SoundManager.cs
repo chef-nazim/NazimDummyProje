@@ -1,30 +1,30 @@
 using NCG.template._NCG.Core.AllEvents;
+using NCG.template._NCG.Core.BaseClass;
 using NCG.template.enums;
 using NCG.template.EventBus;
+using NCG.template.GameFolders.Scripts.AppInitializier;
 using NCG.template.models;
 using NCG.template.Scripts.Others;
 using NCG.template.Scripts.ScriptableObjects;
 
 namespace NCG.template.Managers
 {
-    public class SoundManager 
+    public class SoundManager : BaseManager
     {
         
-        private GameModel _gameModel;
+        private GameModel _gameModel =>GameModel.Instance;
         private Containers _containers => Containers.instance;
-        private GameHelper _gameHelper; // todo bi sekilde buraya getir
+        private GameHelper _gameHelper => AppInitializier.instance.GameHelper;
 
         
-        
-        public SoundManager()
+        public override void Initialize()
         {
-            _gameModel = GameModel.Instance;
-            Subscriptions();
+            EventBus<FeelingEvent>.Subscribe(OnFeelingEvent);
         }
-        protected  void Subscriptions()
+
+        public override void Dispose()
         {
-            
-            EventBus<FeelingEvent>.Subscriber(OnFeelingEvent);
+            EventBus<FeelingEvent>.Unsubscribe(OnFeelingEvent);
         }
 
         private void OnFeelingEvent(FeelingEvent feelingEvent)
@@ -46,5 +46,7 @@ namespace NCG.template.Managers
                 audioSource.PlayOneShot(clip, 1);
             }
         }
+
+        
     }
 }

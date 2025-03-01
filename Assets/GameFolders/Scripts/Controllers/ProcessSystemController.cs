@@ -1,5 +1,6 @@
 using MessagePipe;
 using NCG.template._NCG.Core.AllEvents;
+using NCG.template._NCG.Core.BaseClass;
 using NCG.template.enums;
 using NCG.template.EventBus;
 using NCG.template.Events;
@@ -12,37 +13,29 @@ using NCG.template.Scripts.State;
 
 namespace NCG.template.Controllers
 {
-    public class ProcessSystemController
+    public class ProcessSystemController : BaseController
     {
-      
-
-        //GameManager _gameManager => GameManager.instance;
-
-        GameModel _gameModel;
-        
+        GameModel _gameModel => GameModel.Instance;
         Containers _containers => Containers.instance;
-        
         LevelModelController _levelModelController => LevelModelController._instance;
-
-
-        public ProcessSystemController()
+        
+        public override void Initialize()
         {
-            _gameModel =GameModel.Instance;
-            Init();
+            EventBus<TapITableItemEvent>.Subscribe(HandleTapItemEvent);
+            EventBus<LevelCreatedEvent>.Subscribe(LevelCreated);
+            EventBus<UseBoosterEvent>.Subscribe(UseBooster);
         }
 
-
-        protected void Init()
+        public override void Dispose()
         {
-            
-            EventBus<TapITableItemEvent>.Subscriber(HandleTapItemEvent);
-
-            
-            EventBus<LevelCreatedEvent>.Subscriber(LevelCreated);
-
-            
-            EventBus<UseBoosterEvent>.Subscriber(UseBooster);
+            EventBus<TapITableItemEvent>.Unsubscribe(HandleTapItemEvent);
+            EventBus<LevelCreatedEvent>.Unsubscribe(LevelCreated);
+            EventBus<UseBoosterEvent>.Unsubscribe(UseBooster);
         }
+        
+        
+        
+        
 
 
         private async void UseBooster(UseBoosterEvent useBoosterEvent)
@@ -76,5 +69,7 @@ namespace NCG.template.Controllers
         private void LevelCreated(LevelCreatedEvent levelCreatedEvent)
         {
         }
+
+        
     }
 }

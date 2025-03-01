@@ -6,10 +6,11 @@ namespace NCG.template._NCG.Core.View
 {
     public abstract class BaseView : MonoBehaviour
     {
+        public  GameObject View;
         protected virtual void OnEnable()
         {
             
-            
+            View.SetActive(false);
         }
         protected virtual void OnDisable()
         {

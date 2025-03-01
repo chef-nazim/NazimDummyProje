@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NCG.template.Scripts.Others
 {
     
-        public class AnalyticEventHelper
+        public  static class AnalyticEventHelper
         {
         #region public
         
@@ -39,7 +39,11 @@ namespace NCG.template.Scripts.Others
             GameAnalytics.NewDesignEvent("LevelComplete:" + "RemainingTime:" + levelIDToString, remainingTime);
             GameAnalytics.NewDesignEvent("LevelComplete:" + "Coin:" + levelIDToString, coin);*/
         }
-        
+        public static void LevelComplete(int level)
+        {
+            /*string levelIDToString = GetLevelIDToString(level);
+            LevelCompleteBase(level);
+        }
         public static void RVShow( FailType type,int level)
         {
             /*GameAnalytics.NewDesignEvent("RW:" + type.ToString()+":"+ level.ToString("D5"));

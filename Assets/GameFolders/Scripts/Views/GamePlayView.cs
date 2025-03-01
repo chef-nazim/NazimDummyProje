@@ -79,7 +79,7 @@ namespace NCG.template.Views
         
         protected override void SubscribeEvents()
         {
-            EventBus<LevelModelCreatedEvent>.Subscriber(LevelModelCreated);
+            EventBus<LevelModelCreatedEvent>.Subscribe(LevelModelCreated);
         }
 
         
@@ -96,11 +96,13 @@ namespace NCG.template.Views
              SetCoinText(_gameModel.CoinCount);
              SetLevelText(_gameModel.Level);
              
+             View.SetActive(true);
         }
 
         public override void Hide()
         {
             
+            View.SetActive(false);
         }
         
         

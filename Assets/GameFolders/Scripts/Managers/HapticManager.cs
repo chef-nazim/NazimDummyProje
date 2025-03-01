@@ -1,27 +1,28 @@
+using System;
+using Cysharp.Threading.Tasks;
 using Lofelt.NiceVibrations;
 using NCG.template._NCG.Core.AllEvents;
+using NCG.template._NCG.Core.BaseClass;
 using NCG.template.EventBus;
 using NCG.template.models;
+using UnityEngine;
 
 namespace NCG.template.Managers
 {
-    public class HapticManager
+    public class HapticManager : BaseManager
     {
-        private GameModel _gameModel;
+        private GameModel _gameModel => GameModel.Instance;
 
-        
-        
-        public HapticManager()
+        public override async void Initialize()
         {
-            _gameModel = GameModel.Instance;
-            Subscriptions();
+            EventBus<FeelingEvent>.Subscribe(OnFeelingEvent);
         }
 
-        protected void Subscriptions()
+        public override void Dispose()
         {
-           
-            EventBus<FeelingEvent>.Subscriber(OnFeelingEvent);
+            EventBus<FeelingEvent>.Unsubscribe(OnFeelingEvent);
         }
+
 
         private void OnFeelingEvent(FeelingEvent feelingEvent)
         {
@@ -37,6 +38,5 @@ namespace NCG.template.Managers
 
             HapticPatterns.PlayPreset(feelingEvent.HapticType);
         }
-        
     }
 }

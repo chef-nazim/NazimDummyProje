@@ -107,11 +107,13 @@ namespace NCG.template.Views
         public override void Show(MenuData menuData)
         {
             
+            View.SetActive(true);
         }
 
         public override void Hide()
         {
             
+            View.SetActive(false);
         }
         
         

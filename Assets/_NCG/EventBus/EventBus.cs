@@ -8,7 +8,7 @@ namespace NCG.template.EventBus
     {
         private static HashSet<Action<T>> eventListeners = new HashSet<Action<T>>();
 
-        public static void Subscriber(Action<T> listener)
+        public static void Subscribe(Action<T> listener)
         {
             if (listener != null)
                 eventListeners.Add(listener);
