@@ -1,8 +1,9 @@
 using NCG.template.models;
+using UnityEngine;
 
 namespace NCG.template.Scripts.Item
 {
-    public class GridItem : BaseItem 
+    public class GridItem : MonoBehaviour 
     {
         
     }

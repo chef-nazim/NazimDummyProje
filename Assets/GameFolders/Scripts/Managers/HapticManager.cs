@@ -39,4 +39,6 @@ namespace NCG.template.Managers
             HapticPatterns.PlayPreset(feelingEvent.HapticType);
         }
     }
+
+   
 }

@@ -1,8 +1,9 @@
 using NCG.template.models;
+using UnityEngine;
 
 namespace NCG.template.Scripts.Item
 {
-    public class GoalItem : BaseItem
+    public class GoalItem : MonoBehaviour
     {
         
     }

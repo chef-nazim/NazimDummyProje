@@ -2,12 +2,13 @@ using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using NCG.template._NCG.Core.AllEvents;
+using NCG.template._NCG.Pool;
 using NCG.template.Controllers;
 using NCG.template.EventBus;
 using NCG.template.extensions;
-using NCG.template.GameFolders.Scripts.Pool;
 using NCG.template.Managers;
 using NCG.template.models;
+using NCG.template.Scripts.Item;
 using NCG.template.Scripts.Others;
 using NCG.template.Scripts.ScriptableObjects;
 using UnityEngine;
@@ -36,6 +37,7 @@ namespace NCG.template.GameFolders.Scripts.AppInitializier
         {
             
             Canvas.ForceUpdateCanvases();
+            
             EventBus<CreateGamePlaySceneEvent>.Publish(new CreateGamePlaySceneEvent());
         }
 
