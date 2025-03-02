@@ -56,5 +56,8 @@ namespace NCG.template._NCG.Core.AllEvents
         public HapticPatterns.PresetType HapticType = HapticPatterns.PresetType.None;
     }
 
+    public struct CreatePoolsEvent : IEvent
+    {
+    }
     #endregion
 }

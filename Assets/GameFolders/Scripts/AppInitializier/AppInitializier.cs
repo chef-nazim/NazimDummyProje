@@ -37,7 +37,7 @@ namespace NCG.template.GameFolders.Scripts.AppInitializier
         {
             
             Canvas.ForceUpdateCanvases();
-            
+            EventBus<CreatePoolsEvent> .Publish(new CreatePoolsEvent());
             EventBus<CreateGamePlaySceneEvent>.Publish(new CreateGamePlaySceneEvent());
         }
 
@@ -48,9 +48,12 @@ namespace NCG.template.GameFolders.Scripts.AppInitializier
             
             EventLoader.InitializAllBaseManager();
             EventLoader.InitializAllBaseController();
+            
+            
             //Application.targetFrameRate = 60;
             //  GameAnalytics.Initialize();
             AnalyticEventHelper.GameStart();
+            
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             
             
