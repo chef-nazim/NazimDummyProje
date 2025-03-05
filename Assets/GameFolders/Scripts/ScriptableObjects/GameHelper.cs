@@ -12,6 +12,8 @@ namespace NCG.template.Scripts.ScriptableObjects
     [CreateAssetMenu(menuName = "GameHelper", fileName = "GameHelper", order = 0)]
     public class GameHelper : ScriptableObject
     {
+        [SerializeField]private int maxLevel = 2;
+        [SerializeField]private int loopLevel = 1;
         public List<SoundPackItem> Clips = new List<SoundPackItem>();
 
         public int LevelCompleteCoin = 20;
@@ -34,6 +36,23 @@ namespace NCG.template.Scripts.ScriptableObjects
                 default:
                     return 0;
             }
+        }
+
+        public int CurrentLevel(int level)
+        {
+            int levelID = level;
+            if (levelID > maxLevel)
+            {
+                levelID = (level - maxLevel);
+                levelID = (levelID % (maxLevel - loopLevel)) + (loopLevel - 1);
+                if (levelID == (loopLevel - 1))
+                {
+                    levelID = maxLevel;
+                }
+            }
+
+
+            return levelID;
         }
     }
 }

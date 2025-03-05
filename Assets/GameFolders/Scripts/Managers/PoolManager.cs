@@ -25,7 +25,7 @@ namespace NCG.template.Managers
 
         public override void Dispose()
         {
-            cellItemPool.Dispose();
+            //cellItemPool.Dispose();
         }
     }
 }

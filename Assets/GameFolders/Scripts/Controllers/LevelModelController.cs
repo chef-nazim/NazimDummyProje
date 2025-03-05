@@ -7,8 +7,10 @@ using NCG.template._NCG.Core.Model;
 using NCG.template.EventBus;
 using NCG.template.Events;
 using NCG.template.extensions;
+using NCG.template.GameFolders.Scripts.AppInitializier;
 using NCG.template.models;
 using NCG.template.Scripts.Others;
+using NCG.template.Scripts.ScriptableObjects;
 using NCG.template.timer;
 using UnityEngine;
 using VContainer;
@@ -19,6 +21,7 @@ namespace NCG.template.Controllers
     {
         public static LevelModelController _instance;
         LevelModel _levelModel;
+        GameHelper _gameHelper => AppInitializier.instance.GameHelper;
         
         
         public LevelModel LevelModel => _levelModel;
@@ -44,7 +47,7 @@ namespace NCG.template.Controllers
         {
             //  _chefTimerFactory.RemoveTimer<LevelTimer>(LevelTimer.TimerName);
             _levelModel?.DisposeLevelModel();
-            WrapperLevelData levelData = FileModel.GetLevelData(_gameModel.Level);
+            WrapperLevelData levelData = FileModel.GetLevelData(_gameHelper.CurrentLevel(_gameModel.Level));
             _levelModel = new LevelModel(levelData);
             Debug.Log("LevelModel Created");
             EventBus<LevelModelCreatedEvent>.Publish(new LevelModelCreatedEvent());
