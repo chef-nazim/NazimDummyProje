@@ -14,7 +14,7 @@ namespace NCG.template.Managers
         
         private GameModel _gameModel =>GameModel.Instance;
         private Containers _containers => Containers.instance;
-        private GameHelper _gameHelper => AppInitializier.instance.GameHelper;
+        private GameHelper _gameHelper => Containers.instance.GameHelper;
 
         
         public override void Initialize()

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using NCG.template.GameFolders.Scripts.Level;
 using NCG.template.io;
 using NCG.template.models;
 using UnityEngine;
@@ -42,10 +43,5 @@ namespace NCG.template._NCG.Core.Model
             }
         }
     }
-    [Serializable]
-    public class WrapperLevelData
-    {
-        public int Seed;
-       
-    }
+    
 }

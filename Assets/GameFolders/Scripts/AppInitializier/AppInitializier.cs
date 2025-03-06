@@ -17,12 +17,12 @@ namespace NCG.template.GameFolders.Scripts.AppInitializier
 {
     public class AppInitializier: Singleton<AppInitializier>
     {
-        [SerializeField] private GameHelper _gameHelper;
+        
         private GameModel _gameModel;
         
         
         public GameModel GameModel => _gameModel;
-        public GameHelper GameHelper  => _gameHelper;
+        
         
         
 
@@ -35,7 +35,6 @@ namespace NCG.template.GameFolders.Scripts.AppInitializier
 
         private void Start()
         {
-            
             Canvas.ForceUpdateCanvases();
             EventBus<CreatePoolsEvent> .Publish(new CreatePoolsEvent());
             EventBus<CreateGamePlaySceneEvent>.Publish(new CreateGamePlaySceneEvent());

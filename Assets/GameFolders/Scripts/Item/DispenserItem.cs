@@ -1,18 +1,19 @@
 using NCG.template._NCG.Pool;
 using NCG.template.models;
+using NCG.template.Scripts.Interfaces;
 using UnityEngine;
 
 namespace NCG.template.Scripts.Item
 {
-    public class GridItem : MonoBehaviour, ISpawnItem<GridItemModel>
+    public class DispenserItem : MonoBehaviour, ISpawnItem<DispenserItemModel>
     {
-        public GridItemModel ItemModel { get; set; }
+        public DispenserItemModel ItemModel { get; set; }
         public void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
         }
 
-        public void ReInitialize(GridItemModel itemModel)
+        public void ReInitialize(DispenserItemModel itemModel)
         {
             ItemModel = itemModel;
             itemModel.Item = this;
@@ -26,11 +27,6 @@ namespace NCG.template.Scripts.Item
         public void DisposeItem()
         {
             Destroy(gameObject);
-        }
-
-        public void SetLocalPosition(Vector3 position)
-        {
-            transform.localPosition = position;
         }
     }
 }

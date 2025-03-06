@@ -145,14 +145,7 @@ namespace NCG.template.Managers
 
             EventBus<LevelModelCreatEvent>.Publish(new LevelModelCreatEvent());
 
-            if (_levelModelController.LevelModel?._levelData.Seed != -1)
-            {
-                UnityEngine.Random.InitState(_levelModelController.LevelModel._levelData.Seed);
-            }
-            else
-            {
-                UnityEngine.Random.InitState(_gameModel.Level);
-            }
+            UnityEngine.Random.InitState(1);
 
             LevelProcess levelProcess = new LevelProcess();
             levelProcess.OnProcessCompleted += process =>

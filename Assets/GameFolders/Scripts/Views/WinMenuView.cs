@@ -7,6 +7,7 @@ using NCG.template.enums;
 using NCG.template.EventBus;
 using NCG.template.GameFolders.Scripts.AppInitializier;
 using NCG.template.models;
+using NCG.template.Scripts.Others;
 using NCG.template.Scripts.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ namespace NCG.template.Views
 
 
         GameModel _gameModel => GameModel.Instance;
-        GameHelper _gameHelper => AppInitializier.instance.GameHelper;
+        GameHelper _gameHelper => Containers.instance.GameHelper;
         
 
         protected override void OnEnable()

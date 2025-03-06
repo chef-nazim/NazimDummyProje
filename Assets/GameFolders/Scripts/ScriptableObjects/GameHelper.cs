@@ -4,6 +4,7 @@ using NCG.template.models;
 using NCG.template.Scripts.Objects;
 using NCG.template.enums;
 using NCG.template.Scripts.Others;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -17,7 +18,13 @@ namespace NCG.template.Scripts.ScriptableObjects
         public List<SoundPackItem> Clips = new List<SoundPackItem>();
 
         public int LevelCompleteCoin = 20;
+        
+        [BoxGroup("GridItem")]
+        public float GridItemWidth = 1.0f;
+        [BoxGroup("GridItem")]
+        public float GridItemHeight = 1f;
 
+        
 
         public static int GetBoosterPrice(BoosterType boosterType)
         {

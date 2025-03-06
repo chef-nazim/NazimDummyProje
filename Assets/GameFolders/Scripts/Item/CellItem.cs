@@ -1,5 +1,6 @@
 using NCG.template._NCG.Pool;
 using NCG.template.models;
+using NCG.template.Scripts.Interfaces;
 using UnityEngine;
 
 namespace NCG.template.Scripts.Item

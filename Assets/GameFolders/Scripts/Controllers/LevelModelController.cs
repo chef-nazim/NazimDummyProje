@@ -8,6 +8,7 @@ using NCG.template.EventBus;
 using NCG.template.Events;
 using NCG.template.extensions;
 using NCG.template.GameFolders.Scripts.AppInitializier;
+using NCG.template.GameFolders.Scripts.Level;
 using NCG.template.models;
 using NCG.template.Scripts.Others;
 using NCG.template.Scripts.ScriptableObjects;
@@ -21,7 +22,7 @@ namespace NCG.template.Controllers
     {
         public static LevelModelController _instance;
         LevelModel _levelModel;
-        GameHelper _gameHelper => AppInitializier.instance.GameHelper;
+        GameHelper _gameHelper => Containers.instance.GameHelper;
         
         
         public LevelModel LevelModel => _levelModel;
