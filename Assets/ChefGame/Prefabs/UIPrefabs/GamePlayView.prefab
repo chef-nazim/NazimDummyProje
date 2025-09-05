@@ -619,7 +619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4003723407399967084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1361,6 +1361,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4003723407399967084}
     m_Modifications:
+    - target: {fileID: 418512348048552787, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418512348048552787, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418512348048552787, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418512348048552787, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330498143712668330, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: _popUpBg
+      value: 
+      objectReference: {fileID: 6819373131822445216}
     - target: {fileID: 2636816521074820191, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1465,6 +1490,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BoosterPopUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637518280965704604, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637518280965704604, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637518280965704604, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637518280965704604, guid: a3e7a1a23adff4f53b0aec3ebd033e4d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
